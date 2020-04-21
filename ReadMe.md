@@ -53,12 +53,14 @@ aggregation, it just returns the last value it saw.
 
 ### `gauge.aggregate(periodLengthMs, callback)` ###
 
-The `periodLengthMs` is the amount of time to aggregate over. E.g.
+The `periodLengthMs` is the amount of time to aggregate over, in
+milliseconds. E.g. using [ms](https://www.npmjs.com/package/ms) or doing it
+yourself:
 
-* `ms('5 mins')`
-* `ms('1 hour')`
-* `ms('6 hours')`
-* `ms('1 day')`
+* `ms('5 mins')` or `5 * 60 * 1000`
+* `ms('1 hour')` or `60 * 60 * 1000`
+* `ms('6 hours')` or `6 * 60 * 60 * 1000`
+* `ms('1 day')` or `24 * 60 * 60 * 1000`
 
 Will aggregate one time period from the set of measurements/values and stores
 them in the DB for later retrieval. This function will:
@@ -76,22 +78,17 @@ more sense for your use-case.
 
 ### `gauge.createAggregateStream(periodLengthMs, opts, callback)` ###
 
-Returns a LevelDB stream but adds the `item` event such that you can listen for
-all of the items. Each item contains the `key` which is a string of the epoch
-for the start of each time period.
+Returns a LevelDB stream but can add extra fields onto the `data` event if
+requested. Emits all items in the aggregate defined by `periodLengthMs`.
 
 If you ask for a `periodLengthMs` that hasn't been aggregated (using
-`.aggregate()`, you won't get any data.
+`.aggregate()`, you won't get any data since none is available yet.
 
 Just like the LevelDB stream, you can pass these opts:
 
 * lt, lte, gt, gte
 * reverse
 * limit
-* keys, values
-
-(Though, to be honest, passing `keys` or `values` doesn't really make sense
-since you want both.)
 
 The returned items look like:
 
@@ -107,11 +104,16 @@ item: {
 }
 ```
 
-You can also pass these boolean options which will embellish the returned item:
+You can also pass these boolean options which will simplify or embellish the
+returned item:
 
-* `date: true` (default: `false`)
-* `epoch: true` (default: `false`)
-* `iso: true` (default: `false`)
+* `keys` (default: `true`)
+* `date` (default: `false`)
+* `epoch` (default: `false`)
+* `iso` (default: `false`)
+
+Passing `values: false` (as is allowed in LevelDB) doesn't make sense here, so
+we delete it and therefore ignore it.
 
 This embellishes each item with the corresponding field, such as:
 
