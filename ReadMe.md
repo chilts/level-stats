@@ -145,16 +145,6 @@ These types will be added in the future.
 Also, sets can be used as small sets (exact) or large sets (approximate). Large
 sets are implemented using HyperLogLogs
 
-## Aggregation ##
-
-This `level-stats` package does no aggregation but instead stores everything
-we've been given. By doing it this way, we can use this package directly and
-get a complete picture.
-
-One drawback of course is the amount of space used if our data is getting
-bigger. We can therefore put `level-stats-aggregator` in front of `level-stats`
-and determine how often to write to the datastore via that package.
-
 ## Inspiration ##
 
 * [Flickr's statsd](https://code.flickr.net/2008/10/27/counting-timing/)
