@@ -2,7 +2,9 @@
 const sub = require("subleveldown")
 
 // local
-const stats = require('./lib/stats.js')
+const Gauge = require('./lib/gauge.js')
 
 // export
-module.exports = stats
+module.exports = {
+  Gauge,
+}
