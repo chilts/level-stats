@@ -235,6 +235,8 @@ sets are implemented using HyperLogLogs
 
 ## ChangeLog ##
 
+* v1.2.1
+  * (FIX) Minor fix to ReadMe formatting
 * v1.2.0
   * (NEW) Counter
 * v1.1.0
