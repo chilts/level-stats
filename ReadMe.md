@@ -232,6 +232,15 @@ These types will be added in the future.
 Also, sets can be used as small sets (exact) or large sets (approximate). Large
 sets are implemented using HyperLogLogs
 
+## ChangeLog ##
+
+* v1.2.0
+  * (NEW) Counter
+* v1.1.0
+  * Some refactoring
+* v1.0.0
+  * (NEW) Gauge
+
 ## Inspiration ##
 
 * [Flickr's statsd](https://code.flickr.net/2008/10/27/counting-timing/)
