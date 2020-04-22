@@ -137,6 +137,7 @@ setInterval(() => {
     console.log('Done')
   })
 }, periodMs/2)
+```
 
 #### `gauge.createAggregateStream(periodLengthMs, opts)` ####
 
