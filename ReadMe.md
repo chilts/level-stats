@@ -246,10 +246,18 @@ sets are implemented using HyperLogLogs
 
 ## Inspiration ##
 
-* [Flickr's statsd](https://code.flickr.net/2008/10/27/counting-timing/)
+* Flickr's [Counting & Timing](https://code.flickr.net/2008/10/27/counting-timing/)
   * [The Original StatsD](https://github.com/iamcal/Flickr-StatsD)
-* [statsd](https://github.com/statsd/statsd)
-* [statsite](https://github.com/statsite/statsite)
+* Etsy's [Measure Anything, Measure Everything](https://codeascraft.com/2011/02/15/measure-anything-measure-everything/)
+  * [statsd](https://github.com/statsd/statsd)
+
+And other projects:
+
+* [rollup by iamcal](https://github.com/iamcal/wrollup)
+* [statsite by armon](https://github.com/statsite/statsite)
+* [metrics by codahale](https://github.com/codahale/metrics)
+* [metricsd by mojodna](https://github.com/mojodna/metricsd)
+* [statsite by kiip](https://github.com/kiip/statsite)
 
 ## Author ##
 
